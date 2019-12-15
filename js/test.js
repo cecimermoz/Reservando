@@ -69,12 +69,13 @@ describe('Testea la función buscarRestaurant()', () => {
         expect(listado.buscarRestaurante(1)).to.be.eql(prueba);
     });
 
-    it("Devuelve correctamente el error si la búsqueda falla", () => {
-        let prueba = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [5,8,8]);
-        let listado = new Listado(prueba);
-        expect(listado.buscarRestaurante(1)).to.be.equal("No se ha encontrado ningún restaurant");
+    it("Devuelve correctamente el error si el id es 0 (no existe)", () => {
+        expect(listado.buscarRestaurante(0)).to.be.equal("No se ha encontrado ningún restaurant");
     });
 
+    it("Devuelve correctamente el error si el id es negativo", () => {
+        expect(listado.buscarRestaurante(-3)).to.be.equal("No se ha encontrado ningún restaurant");
+    });
 });
 
 describe('Testea la función Restaurantes()', () => {

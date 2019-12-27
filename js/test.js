@@ -95,28 +95,21 @@ describe('Testea la función Restaurantes()', () => {
 
 });
 
-
-
-/*
-
-//Función que recibe los filtros que llegan desde el HTML y filtra el arreglo de restaurantes.
-//Solo se filtra si el valor recibido es distinto de null.
-
-Listado.prototype.obtenerRestaurantes = function(filtroRubro, filtroCiudad, filtroHorario) {
-    var restaurantesFiltrados = this.restaurantes;
-    if (filtroRubro !== null) {
-        restaurantesFiltrados = restaurantesFiltrados.filter(restaurant => restaurant.rubro == filtroRubro);
-    }
-
-    if (filtroCiudad !== null) {
-        restaurantesFiltrados = restaurantesFiltrados.filter(restaurant => restaurant.ubicacion == filtroCiudad);
-    }
-
-    if (filtroHorario !== null) {
-        restaurantesFiltrados = restaurantesFiltrados.filter(function(res) {
-            return res.horarios.some(horario => horario == filtroHorario);
-        });
-    }
-    return restaurantesFiltrados;
-}
-*/
+describe("Test de Reservas", () => {
+    it("Precio base es correcto", () => {
+        var reserva1 = new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "");
+        expect(reserva1.precioBase()).to.be.equal(2800);
+    },
+    it("Precio final es correcto"), () => {
+        var reserva2 = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200");
+        expect(reserva2.precioFinal()).to.equal(100);
+    },
+    it("El descuento por más de 8 personas funciona correcto"), () => {
+        var reserva3 = new Reserva (new Date(2018, 7, 27, 14, 100), 10, 150, "");
+        expect(reserva3.precioFinal()).to.equal(1275);
+    },
+    it("El descuento por 6 personas funciona correcto"), () => {
+        var reserva4 = new Reserva (new Date(2018, 7, 27, 14, 100), 6, 150, "");
+        expect(reserva4.precioFinal()).to.equal(810);
+    },
+)});

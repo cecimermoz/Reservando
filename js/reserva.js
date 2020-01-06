@@ -56,5 +56,3 @@ class Reserva{
         return precioActualizado;
     }
 }
-// La reserva debe ser capaz de responder el precio final:
-// precio final = precio base + adicionales - descuentos
